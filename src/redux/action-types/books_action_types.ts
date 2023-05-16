@@ -1,0 +1,12 @@
+export const LOAD_NEW_BOOKS = 'LOAD_NEW_BOOKS';
+export const SET_NEW_BOOKS = 'SET_NEW_BOOKS';
+
+export const LOAD_SEARCH_BOOKS = 'LOAD_SEARCH_BOOKS';
+export const SET_SEARCH_BOOKS = 'SET_SEARCH_BOOKS';
+
+export const LOAD_SELECTED_BOOK = 'LOAD_SELECTED_BOOK';
+export const SET_SELECTED_BOOK = 'SET_SELECTED_BOOK';
+
+
+
+
