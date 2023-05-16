@@ -34,6 +34,7 @@ export interface IBookInfo {
 	error: string,
     title: string,
     subtitle: string,
+    language:string,
     authors: string,
     publisher: string,
     isbn10: string,
@@ -46,6 +47,15 @@ export interface IBookInfo {
     image: string,
     url: string,
     pdf: any,
+}
+
+export interface IBookCard {
+    title: string,
+    subtitle: string,
+    isbn10: string,
+    isbn13: string,
+    price: string,
+    image: string,
 }
 
 export interface IUserData {

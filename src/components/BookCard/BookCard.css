@@ -1,0 +1,100 @@
+.book-card{
+min-width: 15rem;
+padding:1.5rem;
+background-color: #FFF;
+border-radius: 1rem;
+display: flex;
+flex-direction: column;
+gap:1rem;
+align-items: center;
+transition: 0.2s;
+}
+
+.book-card:hover{
+    transform: scale(1.02);
+    box-shadow: 0.3rem 0.3rem 0.8rem rgba(0,0,0,0.3);
+}
+
+.book-card__image{
+    width: 12rem;
+    height: 14rem;
+    border-radius: 0 1.5rem 0 1.5rem;
+    border: 3px solid #bebebe;
+    transition: 0.3s;
+}
+
+.book-card__image:hover{
+    transform: scale(1.25);
+    border: none
+}
+
+.book-card__title{
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top:auto;
+}
+
+.book-card__title:hover{
+    color:#b90707;
+}
+
+.price-container{
+    display: flex;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #d8d8d8;
+
+    justify-content: center;
+    gap: 2rem;
+}
+
+.book-card__price{
+    font-size: 1.5rem;
+    align-self: flex-start;
+}
+
+.counter{
+    display:flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.counter__button{
+    padding: 0.5rem;
+    width: 2rem;
+    border-radius: 3px;
+    border: none;
+    background-color:#d3d3d3;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.counter__button:hover{
+transform: scale(1.1);
+}
+
+.counter__button[disabled]{
+    cursor:default;
+    background-color:#f0f0f0;
+}
+
+.add-to-cart{
+    font-size: 1.4rem;
+    width: 100%;
+    padding: 0.5rem 2rem;
+    
+    background-color: rgb(241, 128, 35);
+    color:#fff;
+    border:none;
+
+    border-radius: 0.3rem;
+    cursor:pointer;
+    transition: 0.3s;
+}
+.add-to-cart:hover{
+    background-color: rgb(255, 174, 0);
+
+}
