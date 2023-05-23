@@ -1,0 +1,15 @@
+.main-header{
+display: flex;
+align-items: center;
+gap:1rem;
+margin-bottom: 1rem;
+padding: 0 2rem;
+}
+
+.logo{
+    font-weight: bold;
+    font-size: 3rem;
+    color:#fff;
+    text-align: center;
+    margin-right: auto;
+}

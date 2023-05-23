@@ -1,2 +1,5 @@
 export const SET_THEME = 'SET_THEME';
+export const SET_ACTIVE_PAGE = 'SET_ACTIVE_PAGE';
+export const SET_SEARCH_REQUEST = 'SET_SEARCH_REQUEST';
+export const SET_BURGER_STATUS = 'SET_BURGER_STATUS';
 

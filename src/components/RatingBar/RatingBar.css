@@ -1,0 +1,21 @@
+.rate{
+    display: flex;
+    margin-bottom: 1rem;
+}
+.star-container{
+    position: relative;
+}
+
+.gold-star{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index: 5;
+    overflow: hidden;
+}
+.rate__count{
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    transform: translateY(-3px);
+
+}

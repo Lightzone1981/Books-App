@@ -1,11 +1,37 @@
 .cards-container{
-    margin: 0 auto;
-    max-width: 1200px;
-    padding:1 rem;
-
+    padding: 2rem;
+    max-height: calc(100vh - 15rem);
+    overflow: auto;
+    
     display:grid;
     justify-items:space-between;
-    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1.5rem;
     grid-auto-flow: row;
+    transition: 0.5s;
+}
+
+.cards-container:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+.cards-container::-webkit-scrollbar{
+    width: 0;
+}
+
+
+
+.message-container{
+    height: 50vh;
+display:flex;
+align-items: center;
+justify-content: center;
+}
+
+.search-message{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 3rem;
+    color:#fff;
 }

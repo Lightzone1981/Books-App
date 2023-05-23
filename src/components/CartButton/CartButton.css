@@ -1,0 +1,26 @@
+.cart-button{
+    width: 3rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: .3s;
+}
+
+.cart-button:hover{
+    transform: scale(1.1);
+    opacity: 1;
+
+}
+
+.cart-button .cart-icon{
+    width: 2.7rem;
+    height: 2.7rem;
+}
+
+.cart-count{
+    color: #fff;
+    align-self: flex-end;
+}

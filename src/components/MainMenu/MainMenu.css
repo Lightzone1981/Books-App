@@ -1,0 +1,110 @@
+.main-menu{
+    background-color: #062A40;
+
+}
+
+.main-menu__list{
+    list-style-type: none;
+    display: flex;
+}
+
+.main-menu__item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    flex-wrap: nowrap;
+    height: 6rem;
+    width: 7rem;
+    overflow: hidden;
+    padding: 2rem;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.main-menu__item[data-active = 'true']{
+    flex-grow: 1;
+}
+
+
+.main-menu__item-title{
+    flex-shrink: 0;
+    padding-left: 1rem;
+    color:#fff;
+    font-size: 1.8rem;
+}
+
+#search-input{
+    margin-left: 1rem;
+}
+
+.main-menu__stripe{
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 0.5rem;
+}
+
+.main-menu__item:hover:has(.new-icon){
+    background-color: rgba(0, 184, 34, 0.8);
+}
+
+
+.main-menu__stripe--new,
+.main-menu__item[data-active = 'true']:has(.new-icon){
+    background-color: #00B822;
+}
+
+.main-menu__item:hover:has(.search-icon){
+    background-color: rgba(153, 0, 204, 0.8);
+}
+
+.main-menu__stripe--search,
+    .main-menu__item[data-active = 'true']:has(.search-icon){
+    background-color: #9900CC;
+}
+
+.main-menu__item:hover:has(.favorite-icon){
+    background-color: rgba(255, 102, 0, 0.8);
+}
+
+.main-menu__stripe--favorite,
+.main-menu__item[data-active = 'true']:has(.favorite-icon){
+    background-color: #FF6600;
+}
+
+.main-menu__item:hover:has(.viewed-icon){
+    background-color: rgba(0, 161, 135, 0.8);
+}
+
+.main-menu__stripe--viewed,
+.main-menu__item[data-active = 'true']:has(.viewed-icon){
+    background-color: #00a187;
+
+}
+
+.menu-icon{
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+}
+
+.favorite-count, .viewed-count{
+    position: absolute;
+    top:1rem;
+    left:3.7rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#fff;
+    background-color: rgb(0, 89, 255);
+}
+
+.viewed-count{
+    background-color: rgb(255, 166, 0);
+
+}

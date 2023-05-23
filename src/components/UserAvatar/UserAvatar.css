@@ -1,0 +1,43 @@
+.user-avatar__container {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	cursor: pointer;
+	transition: .3s;
+}
+
+.user-avatar__container:hover {
+	opacity: .6;
+}
+
+.user-avatar__short-name {
+	background-color: #FFF;
+	color:rgb(2, 60, 148);
+	font-size: 1.5rem;
+	width: 2.6rem;
+	height: 2.6rem;
+	border-radius: 1.3rem;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.user-avatar__button {
+	width: 2.5rem;
+	height: 2.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.4;
+}
+
+.user-avatar__button:hover{
+	transform: scale(1.1);
+	opacity: 1;
+}
+
+.user-avatar__name{
+	color: #fff;
+	font-size: 1.4rem;
+}

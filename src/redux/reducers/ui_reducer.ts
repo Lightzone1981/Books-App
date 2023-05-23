@@ -1,19 +1,15 @@
 import {
-	SET_THEME,
+	SET_THEME,SET_BURGER_STATUS, SET_ACTIVE_PAGE, SET_SEARCH_REQUEST
 } from "../action-types/index";
 
 const initialState = {
 	theme: "light",
-	burgerStatus: false,
-	postModalVisible: false,
-	profileModalVisible: false,
-	searchActive: false,
-	paginationActiveItem: 1,
-	activeTab: 'All',
+	activePage: 'new',
+	searchRequest:'',
 };
 
 const getInitialState = () => {
-	const localState = localStorage.localState
+	const localState = localStorage.localBooksState
 	if (localState) {
 		const parse = JSON.parse(localState)
 		const { ui } = parse
@@ -32,6 +28,23 @@ const uiReducer = (state = getInitialState(), action: any) => {
 				theme,
 			};
 		}
+			
+		case SET_ACTIVE_PAGE: {
+			const { activePage } = action;
+			return {
+				...state,
+				activePage
+			};
+		}
+			
+		case SET_SEARCH_REQUEST: {
+			const { searchRequest } = action;
+			return {
+				...state,
+				searchRequest
+			};
+		}
+		
 		
 		default: {
 			return state;

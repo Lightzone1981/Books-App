@@ -1,0 +1,16 @@
+.error-container{
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 15rem);
+    align-items: center;
+    justify-content: center;
+    color:#FFF;
+}
+.error-container span:first-child{
+    font-size: 8rem;
+    font-weight: bold;
+}
+
+.error-container span:lasst-child{
+    font-size: 2rem;
+}

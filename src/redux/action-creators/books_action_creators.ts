@@ -1,5 +1,7 @@
-import { LOAD_NEW_BOOKS, SET_NEW_BOOKS, LOAD_SEARCH_BOOKS, SET_SEARCH_BOOKS, LOAD_SELECTED_BOOK, SET_SELECTED_BOOK } from "../action-types/index";
-import { IBookInfo, IBooksResponse } from '../../types';
+import { LOAD_NEW_BOOKS, SET_NEW_BOOKS, LOAD_SEARCH_BOOKS, SET_SEARCH_BOOKS, LOAD_SELECTED_BOOK, SET_SELECTED_BOOK, SET_FAVORITE_BOOK, REMOVE_FAVORITE_BOOK,REMOVE_ALL_FAVORITES, SET_VIEWED_BOOK, REMOVE_VIEWED_BOOK, REMOVE_ALL_VIEWED, SET_CART_BOOK, REMOVE_CART_BOOK, CLEAR_CART} from "../action-types/index";
+
+
+import { IBookCard, IBookInfo, IBooksResponse } from '../../types';
 import { takeEvery, put } from 'redux-saga/effects'
  
 const loadNewBooks = () => ({
@@ -19,19 +21,32 @@ const loadSelectedBook = (isbn:string) => ({
 function* fetchNewBooks() {
     
     let URL = `https://api.itbook.store/1.0/new`
-    
-    const resp: Response = yield fetch(URL)
-    const data: IBooksResponse = yield resp.json()
-    yield put(setNewBooks(data.total, data.books))
+    try {
+        const resp: Response = yield fetch(URL)
+        if (resp.status === 200) {
+            const data: IBooksResponse = yield resp.json()
+            yield put(setNewBooks(data.total, data.books))
+        }
+    }
+    catch (error) {
+        console.log('error');
+        window.location.pathname='/error'
+    }
+
 }
 
 function* fetchSearchBooks(action: any) {
     const { query } = action
     let URL = `https://api.itbook.store/1.0/search/${query}`
-    
-    const resp: Response = yield fetch(URL)
-    const data: IBooksResponse = yield resp.json()
-    yield put(setSearchBooks(data.total, data.page, data.books))
+    try {
+        const resp: Response = yield fetch(URL)
+        const data: IBooksResponse = yield resp.json()
+        yield put(setSearchBooks(data.total, data.page, data.books))
+    }
+    catch (error) {
+        console.log('error');
+        window.location.pathname='/error'
+    }
 }
 
 function* fetchSelectedBook(action: any) {
@@ -67,11 +82,54 @@ const setSearchBooks = (total:string, page:string, books:IBookInfo[]) => ({
     }
 })
 
+
 const setSelectedBook = (selectedBook:IBookInfo) => ({
     type: SET_SELECTED_BOOK,
     selectedBook
 })
 
+const setFavoriteBook = (favoriteBook:IBookCard) => ({
+    type: SET_FAVORITE_BOOK,
+    favoriteBook
+})
+
+const removeFavoriteBook = (isbn13:string) => ({
+    type: REMOVE_FAVORITE_BOOK,
+    isbn13
+})
+
+const removeAllFavorites = () => ({
+    type: REMOVE_ALL_FAVORITES,
+})
+
+const setViewedBook = (viewedBook:IBookCard) => ({
+    type: SET_VIEWED_BOOK,
+    viewedBook
+})
+
+const removeViewedBook = (isbn13:string) => ({
+    type: REMOVE_VIEWED_BOOK,
+    isbn13
+})
+
+const removeAllViewed = () => ({
+    type: REMOVE_ALL_VIEWED,
+})
+
+const setCartBook = (book:IBookCard) => ({
+    type: SET_CART_BOOK,
+    book
+})
+
+const removeCartBook = (isbn13:string) => ({
+    type: REMOVE_CART_BOOK,
+    isbn13
+})
+
+const clearCart = () => ({
+    type: CLEAR_CART,
+})
 
 
-export { loadNewBooks, setNewBooks, loadSearchBooks, setSearchBooks, loadSelectedBook, setSelectedBook, watcherBooks};
+
+export { loadNewBooks, setNewBooks, loadSearchBooks, setSearchBooks, setFavoriteBook, removeFavoriteBook, removeAllFavorites, loadSelectedBook, setSelectedBook, setViewedBook, removeViewedBook, removeAllViewed, setCartBook, removeCartBook, clearCart, watcherBooks};

@@ -3,14 +3,14 @@ import { IUserData } from "../../types";
 
 const initialState = {
 	authorizedUser: {
-		username: "",
+		name: "Lightzone",
 		email: "",
 		id: "",
 	},
 }
 
 const getInitialState = () => {
-	const localState = localStorage.localState
+	const localState = localStorage.localBooksState
 	if (localState) {
 		const parse = JSON.parse(localState)
 		const { user } = parse
