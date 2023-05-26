@@ -14,4 +14,5 @@ export * from './ErrorPage'
 export * from './Input'
 export * from './CartButton'
 export * from './UserAvatar'
+export * from './AddToCartButton'
 

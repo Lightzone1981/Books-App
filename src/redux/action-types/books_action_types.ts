@@ -19,6 +19,14 @@ export const SET_CART_BOOK = 'SET_CART_BOOK';
 export const REMOVE_CART_BOOK = 'REMOVE_CART_BOOK';
 export const CLEAR_CART = 'CLEAR_CART';
 
+export const INC_CART_PRICE = 'INC_CART_PRICE';
+export const DEC_CART_PRICE = 'DEC_CART_PRICE';
+
+export const INC_BOOKS_COUNT = 'INC_BOOKS_COUNT';
+export const DEC_BOOKS_COUNT = 'DEC_BOOKS_COUNT';
+
+
+
 
 
 

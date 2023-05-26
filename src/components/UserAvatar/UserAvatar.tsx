@@ -10,7 +10,6 @@ const UserAvatar = () => {
 	const authorizedUserName = useSelector(
 		(state: IStoreState) => state.user.authorizedUser.name	);
 
-		console.log(authorizedUserName);
 	return (
 		<div
 			className="user-avatar"

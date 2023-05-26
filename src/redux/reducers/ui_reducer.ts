@@ -1,11 +1,12 @@
 import {
-	SET_THEME,SET_BURGER_STATUS, SET_ACTIVE_PAGE, SET_SEARCH_REQUEST
+	SET_THEME,SET_CART_STATUS, SET_ACTIVE_PAGE, SET_SEARCH_REQUEST
 } from "../action-types/index";
 
 const initialState = {
 	theme: "light",
 	activePage: 'new',
-	searchRequest:'',
+	searchRequest: '',
+	cartPopupStatus: false,
 };
 
 const getInitialState = () => {
@@ -45,6 +46,13 @@ const uiReducer = (state = getInitialState(), action: any) => {
 			};
 		}
 		
+		case SET_CART_STATUS: {
+			const { cartPopupStatus } = action;
+			return {
+				...state,
+				cartPopupStatus
+			};
+		}
 		
 		default: {
 			return state;

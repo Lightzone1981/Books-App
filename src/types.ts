@@ -1,7 +1,7 @@
 export interface IStoreState {
 	books: IBooksState;
 	ui: IUiState;
-	user: IUserState;
+    user: IUserState;
 }
 
 export interface IBooksState {
@@ -11,15 +11,15 @@ export interface IBooksState {
     favoritesBooksTotal: number;
     viewedBooks: IBookInfo[];
     viewedBooksTotal: number;
-    cartBooks: IBookInfo[],
-	cartBooksTotal:number,
+    cartBooks: IBookInCart[],
+    cartBooksTotal: number,
 	selectedBook: IBookInfo;
 	
 }
 
 export interface IUiState {
     theme:string,
-    burgerStatus: boolean,
+    cartPopupStatus: boolean,
     activePage: string,
     searchRequest: string,
 }
@@ -64,6 +64,16 @@ export interface IBookCard {
     isbn13: string,
     price: string,
     image: string,
+}
+
+export interface IBookInCart {
+    title: string,
+    subtitle: string,
+    isbn13: string,
+    price: string,
+    count: number,
+    image: string,
+    bookCartStatus?:boolean,
 }
 
 export interface IIcon {

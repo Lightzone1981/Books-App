@@ -1,13 +1,11 @@
 import "./BookCardsGrid.css";
 import { IStoreState, IBookInfo, IBookCard } from '../../types';
-import {
-	loadNewBooks,
-	loadSearchBooks,
-} from "../../redux/action-creators";
+import { loadNewBooks } from "../../redux/action-creators";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/exports";
 import BookCard from "../BookCard/BookCard";
+import EmptyListIcon from "../Icons/EmptyListIcon";
 
 const getMessage = (activePage: string, request:string) => {
 	switch (activePage) {
@@ -76,7 +74,8 @@ const BookCardsGrid = () => {
 				image={book.image}
 				/>)}
 		</div>
-			:<div className="message-container">
+			: <div className="message-container">
+				{message === 'OOPS... No results were found'? <EmptyListIcon width='25' height='25' color={'#fff'}/>:<></>}
 				<h2 className="search-message">{message}</h2>
 			</div>
 	)

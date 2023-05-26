@@ -1,4 +1,4 @@
-import { LOAD_NEW_BOOKS, SET_NEW_BOOKS, LOAD_SEARCH_BOOKS, SET_SEARCH_BOOKS, LOAD_SELECTED_BOOK, SET_SELECTED_BOOK, SET_FAVORITE_BOOK, REMOVE_FAVORITE_BOOK,REMOVE_ALL_FAVORITES, SET_VIEWED_BOOK, REMOVE_VIEWED_BOOK, REMOVE_ALL_VIEWED, SET_CART_BOOK, REMOVE_CART_BOOK, CLEAR_CART} from "../action-types/index";
+import { LOAD_NEW_BOOKS, SET_NEW_BOOKS, LOAD_SEARCH_BOOKS, SET_SEARCH_BOOKS, LOAD_SELECTED_BOOK, SET_SELECTED_BOOK, SET_FAVORITE_BOOK, REMOVE_FAVORITE_BOOK,REMOVE_ALL_FAVORITES, SET_VIEWED_BOOK, REMOVE_VIEWED_BOOK, REMOVE_ALL_VIEWED, SET_CART_BOOK, REMOVE_CART_BOOK, CLEAR_CART, INC_BOOKS_COUNT, DEC_BOOKS_COUNT} from "../action-types/index";
 
 
 import { IBookCard, IBookInfo, IBooksResponse } from '../../types';
@@ -130,6 +130,16 @@ const clearCart = () => ({
     type: CLEAR_CART,
 })
 
+const incrementBooksCount = (isbn13:string) => ({
+    type: INC_BOOKS_COUNT, 
+    isbn13
+})
+
+const decrementBooksCount = (isbn13:string) => ({
+    type: DEC_BOOKS_COUNT,
+    isbn13
+})
 
 
-export { loadNewBooks, setNewBooks, loadSearchBooks, setSearchBooks, setFavoriteBook, removeFavoriteBook, removeAllFavorites, loadSelectedBook, setSelectedBook, setViewedBook, removeViewedBook, removeAllViewed, setCartBook, removeCartBook, clearCart, watcherBooks};
+
+export { loadNewBooks, setNewBooks, loadSearchBooks, setSearchBooks, setFavoriteBook, removeFavoriteBook, removeAllFavorites, loadSelectedBook, setSelectedBook, setViewedBook, removeViewedBook, removeAllViewed, setCartBook, removeCartBook, clearCart,incrementBooksCount, decrementBooksCount, watcherBooks};

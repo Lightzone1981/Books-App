@@ -25,6 +25,12 @@ const MainMenu = () => {
         setRequest(e.target.value)
 		dispatch(loadSearchBooks(e.target.value))
 		dispatch(setSearchRequest(e.target.value))
+    }
+    
+    const handleClearRequest = () => {
+        setRequest('')
+		dispatch(loadSearchBooks(''))
+		dispatch(setSearchRequest(''))
 	}
     
     const handleMenuItemClick = (newActivePage:string) => {
@@ -71,7 +77,8 @@ const MainMenu = () => {
                 <li className="main-menu__item" id='search-menu-item' title='Books search' data-active={activePage === 'search'} onClick={()=>handleMenuItemClick('search')}>
                     <div className="main-menu__stripe main-menu__stripe--search" id='search-stripe'></div>
                     <SearchIcon width='18' height='18' color='#fff' />
-                    <Input type='text' value={request} id='search-input' name='search-input' placeholder='Search...' callback={handleRequestChange}/>
+                    <Input type='text' value={request} id='search-input' name='search-input' placeholder='Search...' callback={handleRequestChange} />
+                    {request.length ? <div className="clear-request" title='Clear request' onClick={handleClearRequest}></div>:<></>  }
                 </li>
                 <li className="main-menu__item" id='favorite-menu-item' title='Favorites books' data-active={activePage==='favorites'} onClick={()=>handleMenuItemClick('favorites')}>
                     <div className="main-menu__stripe main-menu__stripe--favorite" id='favorite-stripe'></div>

@@ -2,10 +2,11 @@ import './SelectedBook.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { IStoreState } from '../../types';
 import { useParams} from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { loadSelectedBook } from '../../redux/action-creators';
 import CartIcon from '../Icons/CartIcon';
 import { RatingBar } from '../RatingBar';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 const SelectedBook = () => {
     const dispatch = useDispatch()
@@ -13,7 +14,8 @@ const SelectedBook = () => {
 
     useEffect(() => {
         dispatch(loadSelectedBook(bookIsbn))
-    },[bookIsbn])
+        setBookCartStatus(hasCartCurrentBook(isbn13))
+    })
 
     const selectedBook = useSelector((state: IStoreState) => state.books.selectedBook)
     const { title, subtitle, language, authors, publisher, pages, year, rating, isbn10, desc, isbn13, url, pdf, price, image } = selectedBook
@@ -25,15 +27,22 @@ const SelectedBook = () => {
         }
     }
 
+    const hasCartCurrentBook = (isbn13:string) => {
+        for (let i = 0; i < cartBooks.length; i++)
+            if(cartBooks[i].isbn13 === isbn13) return true
+        return false
+    }
+
+    const cartBooks = useSelector((state: IStoreState) => state.books.cartBooks)
+    const [bookCartStatus, setBookCartStatus] = useState(hasCartCurrentBook(isbn13))
+
+
     return (
         <main className="book">
             <div className="book__container">
                 <div className="book__image" style={{ background: `url(${image}) center/cover` }}></div>
                 <h3 className="book__price">{price }</h3>
-                <div className="add-to-cart">
-                    <CartIcon width='26' height='26' color='#fff'/>
-                    <span>Add to cart</span> 
-                </div>
+                <AddToCartButton bookCartStatus={bookCartStatus} title={title} subtitle={subtitle} isbn13={isbn13} price={price} count={1} image={image} />
             </div>
             <div className="book__info-container">
                 <p className="book__authors">{authors}</p>

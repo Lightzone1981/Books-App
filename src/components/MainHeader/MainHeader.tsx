@@ -7,7 +7,7 @@ const MainHeader = () => {
         <div className="main-header">
             <div className="logo">IT-BOOKS</div>
             <UserAvatar/>
-            <CartButton/>
+            <CartButton />
         </div>
     )
 }

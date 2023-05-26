@@ -11,7 +11,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap:2rem;
+	gap:1rem;
 }
 
 .book__image {
@@ -74,12 +74,7 @@
     padding: 1rem;
 }
 
-.book__container .add-to-cart{
-    width: 20rem;
-    /* margin: 0 auto; */
-	flex-grow: 0;
-}
 .book__price{
-    font-size: 1.7rem;
+    font-size: 2.2rem;
 }
 

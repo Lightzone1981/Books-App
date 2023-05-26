@@ -1,5 +1,5 @@
-import { SET_NEW_BOOKS, SET_SEARCH_BOOKS, SET_SELECTED_BOOK, SET_FAVORITE_BOOK, REMOVE_FAVORITE_BOOK, REMOVE_ALL_FAVORITES, SET_VIEWED_BOOK, REMOVE_VIEWED_BOOK, REMOVE_ALL_VIEWED, SET_CART_BOOK, REMOVE_CART_BOOK, CLEAR_CART } from "../action-types/index";
-import { IBookCard, IBookInfo } from "../../types";
+import { SET_NEW_BOOKS, SET_SEARCH_BOOKS, SET_SELECTED_BOOK, SET_FAVORITE_BOOK, REMOVE_FAVORITE_BOOK, REMOVE_ALL_FAVORITES, SET_VIEWED_BOOK, REMOVE_VIEWED_BOOK, REMOVE_ALL_VIEWED, SET_CART_BOOK, REMOVE_CART_BOOK, CLEAR_CART, INC_BOOKS_COUNT, DEC_BOOKS_COUNT} from "../action-types/index";
+import { IBookCard, IBookInfo, IBookInCart } from '../../types';
 
 const initialState = {
 	newBooks: [] as IBookInfo[],
@@ -9,7 +9,7 @@ const initialState = {
 	favoritesBooksTotal: 0,
 	viewedBooks: [] as IBookCard[],
 	viewedBooksTotal: 0,
-	cartBooks: [] as IBookCard[],
+	cartBooks: [] as IBookInCart[],
 	cartBooksTotal: 0,
 	selectedBook: {} as IBookInfo,
 };
@@ -95,9 +95,7 @@ const booksReducer = (state = getInitialState(), action: any) => {
 		case SET_VIEWED_BOOK: {
 			const { viewedBook } = action;
 			let found = false
-			console.log('8888');
 			state.viewedBooks.forEach((el: IBookCard) => {
-				console.log('-',el)
 				if (el.isbn13 === viewedBook.isbn13) {
 					found = true
 					return
@@ -167,6 +165,35 @@ const booksReducer = (state = getInitialState(), action: any) => {
 				cartBooksTotal: 0
 			};
 		}
+			
+		case INC_BOOKS_COUNT: {
+			const { isbn13 } = action
+			const newArr = (state.cartBooks.map((el: IBookInCart) => {
+				if (el.isbn13 === isbn13)
+					el.count += 1
+				return el
+			}));
+			
+			return {
+				...state,
+				cartBooks: newArr,
+			};
+		}
+
+		case DEC_BOOKS_COUNT: {
+			const { isbn13 } = action
+			const newArr = (state.cartBooks.map((el: IBookInCart) => {
+				if (el.isbn13 === isbn13)
+					el.count -= 1
+				return el
+			}));
+			
+			return {
+				...state,
+				cartBooks: newArr,
+			};
+		}
+		
 		
 		default: {
 			return state;

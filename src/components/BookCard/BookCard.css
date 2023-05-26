@@ -63,15 +63,6 @@
     color: rgb(84, 168, 0);
 }
 
-.counter{
-    display:flex;
-    gap: 1rem;
-    align-items: center;
-    font-size: 1.2rem;
-    border: 1px solid #dfdfdf;
-    border-radius: 3px;
-}
-
 .counter__button{
     padding: 0.5rem;
     width: 2rem;
@@ -89,48 +80,6 @@ transform: scale(1.1);
 .counter__button[disabled]{
     cursor:default;
     background-color:#f0f0f0;
-}
-
-.add-to-cart{
-    position:relative;
-    flex-grow: 1;
-    font-size: 1.4rem;
-    width: 100%;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap:1rem;
-    
-    background-color: rgb(241, 128, 35);
-    color:#fff;
-    border:none;
-
-    border-radius: 0.3rem;
-    cursor:pointer;
-    transition: 0.3s;
-    overflow: hidden;
-}
-
-.add-to-cart span{
-    font-size: 1.2rem;
-}
-
-.add-to-cart:hover{
-    background-color: rgb(255, 174, 0);
-    padding-left: 2.5rem;
-}
-
-.add-to-cart .cart-icon{
-position: absolute;
-top:0.6rem;
-left:-2rem;
-transition: 0.4s;
-}
-
-.add-to-cart:hover .cart-icon{
-    left:1.5rem;
-
 }
 
 .book-card__footer{
@@ -180,5 +129,5 @@ transition: 0.4s;
 
 .remove-card::after{
     transform: rotate(-45deg);
-
 }
+

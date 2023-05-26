@@ -1,4 +1,4 @@
-import { SET_THEME, SET_BURGER_STATUS, SET_ACTIVE_PAGE, SET_SEARCH_REQUEST } from "../action-types";
+import { SET_THEME, SET_CART_STATUS, SET_ACTIVE_PAGE, SET_SEARCH_REQUEST } from "../action-types";
 
 const setTheme = (theme:string) => ({
     type: SET_THEME,
@@ -10,9 +10,9 @@ const setActivePage = (activePage:string) => ({
     activePage
 });
 
-const setBurgerStatus = (status:boolean) => ({
-    type: SET_BURGER_STATUS,
-    status
+const setCartStatus = (cartPopupStatus: boolean) => ({
+    type: SET_CART_STATUS,
+    cartPopupStatus
 });
 
 const setSearchRequest = (searchRequest:string) => ({
@@ -25,4 +25,4 @@ const setSearchRequest = (searchRequest:string) => ({
 
 
 
-export { setTheme, setBurgerStatus, setActivePage, setSearchRequest};
+export { setTheme, setCartStatus, setActivePage, setSearchRequest};

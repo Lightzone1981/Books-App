@@ -108,3 +108,35 @@
     background-color: rgb(255, 166, 0);
 
 }
+
+.clear-request{
+    position: absolute;
+    top:2rem;
+    right:3rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: #bbbbbb;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+.clear-request:hover{
+    background-color: #696969;
+}
+
+.clear-request::before,.clear-request::after{
+    position: absolute;
+    content: '';
+    top:.5rem;
+    left:.96rem;
+    width: 1px;
+    height: 1rem;
+    background-color: #fff;
+    transform: rotate(45deg);
+}
+
+.clear-request::after{
+    transform: rotate(-45deg);
+}

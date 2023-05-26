@@ -25,6 +25,8 @@
 .message-container{
     height: 50vh;
 display:flex;
+flex-direction: column;
+gap: 2rem;
 align-items: center;
 justify-content: center;
 }
@@ -34,4 +36,9 @@ justify-content: center;
     text-align: center;
     font-size: 3rem;
     color:#fff;
+}
+
+.empty-list{
+    width: 10rem;
+    height: 12rem;
 }
