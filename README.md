@@ -11,6 +11,9 @@
 **<h2>About the project:</h2>**
 This project is the implementation of a graduate work on creating a user interface for an online bookstore.
 
+Working with an array of books is based on API https://api.itbook.store/  requests.
+Authorization and login implemented using API https://studapi.teachmeskills.by/api/schema/swagger-ui/#/auth
+
 
 ![main screen](./src/docs/screen_2.png)
 ![settings screen](./src/docs/screen_3.png)
