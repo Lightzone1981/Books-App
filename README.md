@@ -6,11 +6,11 @@
 
 **<h1>IT Books App</h1>**
 
-![Splash screen](.src/docs/screen_1.png)
+![Splash screen](./src/docs/screen_1.png)
 
 **<h2>About the project:</h2>**
 This project is the implementation of a graduate work on creating a user interface for an online bookstore.
 
 
-![main screen](.src/docs/screen_2.png)
-![settings screen](.src/docs/screen_3.png)
+![main screen](./src/docs/screen_2.png)
+![settings screen](./src/docs/screen_3.png)
