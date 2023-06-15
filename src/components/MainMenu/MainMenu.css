@@ -109,10 +109,14 @@
 
 }
 
+#search-menu-item input{
+    border: none
+}
+
 .clear-request{
     position: absolute;
-    top:2rem;
-    right:3rem;
+    top:1.8rem;
+    right:2rem;
     width: 2rem;
     height: 2rem;
     border-radius: 1rem;

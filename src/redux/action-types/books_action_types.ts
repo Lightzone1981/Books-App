@@ -25,6 +25,8 @@ export const DEC_CART_PRICE = 'DEC_CART_PRICE';
 export const INC_BOOKS_COUNT = 'INC_BOOKS_COUNT';
 export const DEC_BOOKS_COUNT = 'DEC_BOOKS_COUNT';
 
+export const SET_BOOKS_RATING = 'SET_BOOKS_RATING'
+
 
 
 

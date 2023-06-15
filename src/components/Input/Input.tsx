@@ -1,19 +1,30 @@
 import './Input.css'
 import { IInput } from '../../types';
 
-const Input = ({ type, id, value, placeholder, callback }: IInput) => {
+const Input = ({ type, id, name, label, value, placeholder, isEnable, isEmpty, isValid, isRequired, error, callback }: IInput) => {
     
+    const labelComponent = label ? <label className='input__label' htmlFor={name}>{label}</label> : ''
     return (
         <>
-            <input 
-                className='input'
-                id={id}
-                value ={value}
-                type={type}
-                placeholder={placeholder}
-                // data-empty={isEmpty}
-                onChange={(e) => { callback(e) }}
-            />
+            <div className="input-container" key={name} >
+                {labelComponent}
+                <input 
+                    className='input'
+                    id={id}
+                    name={name}
+                    value ={value}
+                    type={type}
+                    placeholder={placeholder}
+                    data-empty={isEmpty}
+                    data-valid={isValid}
+                    required={isRequired}
+                    disabled={!isEnable}
+                    onChange={(e) => { callback(e) }}
+                />
+                <p className='input__error'>
+                    {error}
+                </p>
+            </div>
         </>
     )
 }

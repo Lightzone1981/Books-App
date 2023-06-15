@@ -6,12 +6,13 @@ import CartPopup from '../CartPopup/CartPopup';
 import { useSelector, useDispatch } from 'react-redux';
 import { IStoreState } from '../../types';
 import { useEffect } from 'react';
-import { setActivePage } from "../../redux/action-creators";
+import { setActivePage, setLoaderStatus } from "../../redux/action-creators";
 
 const FavoriteBooksPage = () => {
     const cartPopupStatus = useSelector((store: IStoreState) => store.ui.cartPopupStatus)
     const dispatch = useDispatch()
     useEffect(() => {
+        dispatch(setLoaderStatus(false))
         dispatch(setActivePage('favorites'))
     }, []);
 

@@ -5,12 +5,18 @@ import CartPopup from '../CartPopup/CartPopup';
 import { useSelector, useDispatch } from 'react-redux';
 import { IStoreState } from '../../types';
 import { useEffect } from 'react';
-import { setActivePage } from "../../redux/action-creators";
+import { setActivePage, setLoaderStatus } from "../../redux/action-creators";
+
+
+
 
 const SearchBookPage = () => {
     const dispatch = useDispatch()
+    
     useEffect(() => {
-        dispatch(setActivePage('search'))
+        dispatch(setLoaderStatus(false))
+
+        // dispatch(setActivePage('search'))
     }, []);
     
     const cartPopupStatus = useSelector((store:IStoreState)=>store.ui.cartPopupStatus)

@@ -1,0 +1,91 @@
+.modal__activate{
+	position: absolute;
+	top:0;
+	left:0;
+	z-index:100;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	background-color: rgba(0,0,0,0.8);
+}
+
+.modal__activate .modal__container{
+    position: relative;
+	border-radius: 1rem;
+    height: fit-content;
+	padding: 4rem;
+	overflow: auto;
+	/* background-color: #5360cd; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap:2rem;
+}
+
+.activation-message{
+	font-size: 1.3rem;
+}
+
+.activation-form{
+	width: 100%;
+	text-align: center;
+}
+
+.modal__activate .modal__container .modal__button{
+    position:absolute;
+    top:0.5rem;
+    right:0.5rem;
+	width: 2rem;
+    height: 2rem;
+	cursor: pointer;
+	transition: 0.3s;
+    background-color: transparent;
+}
+
+.modal__activate .modal__container .modal__button::before, 
+.modal__activate .modal__container .modal__button::after {
+    position: absolute;
+    content:'';
+    top:10%;
+    left:50%;
+    width: 1px;
+    height: 1.5rem;
+    background-color: #000;
+    transform: rotate(45deg);
+}
+
+.modal__activate .modal__container .modal__button::after{
+    transform: rotate(-45deg);
+}
+
+.modal__button:hover {
+    opacity: 0.5;
+}
+
+body:has(.modal__activate) {
+	overflow: hidden;
+}
+
+.activation-form .button-activate {
+	margin-top: 2rem;
+	padding: 1rem;
+	width: 12rem;
+	font-size: 1.5rem;
+	align-self: center;
+	background-color: #5360cd;
+	color: #fff;
+	border: none;
+	cursor:pointer;
+	transition: .3s;
+}
+
+.button-activate:hover{
+	background-color: #757fdd;
+}
+
+.button-activate[disabled]{
+	background-color: #b6b6b6;
+	cursor: auto;
+}

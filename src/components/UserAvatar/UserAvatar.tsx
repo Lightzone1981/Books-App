@@ -4,19 +4,17 @@ import { IUserAvatar } from "../../types";
 import { useDispatch, useSelector } from "react-redux";
 import { IStoreState } from "../../types";
 import { Link } from "react-router-dom";
+import { setProfileModalVisibleStatus } from "../../redux/action-creators";
 
 const UserAvatar = () => {
 	const dispatch = useDispatch();
 	const authorizedUserName = useSelector(
-		(state: IStoreState) => state.user.authorizedUser.name	);
+		(state: IStoreState) => state.user.authorizedUser.username	);
 
 	return (
 		<div
 			className="user-avatar"
-			// onClick={
-			// 	authorizedUserName !== ""
-			// 		? () => dispatch(setProfileModalVisibleStatus(true))
-			// 		: () => {}
+			onClick={() => dispatch(setProfileModalVisibleStatus(true))}
 			>
 			{authorizedUserName === "" ? (
 				<div className="user-avatar__button" title="Sign In">

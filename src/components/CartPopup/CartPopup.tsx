@@ -1,9 +1,9 @@
 import "./CartPopup.css";
 import { IStoreState, IBookCard, IBooksState, IBookInCart } from '../../types';
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 import CartItem from "./CartItem";
-import { clearCart, setCartStatus } from "../../redux/action-creators";
+import { clearCart, setActionModal, setCartStatus } from "../../redux/action-creators";
 import EmptyCartIcon from '../Icons/EmptyCartIcon';
 
 const CartPopup = () => {
@@ -31,6 +31,17 @@ const CartPopup = () => {
     const handleWrapperClick=(e: any) => {
         if(e.target.id==='cart-wrapper') dispatch(setCartStatus(false))
     }
+
+    const handleKeyDown = (e: any) => {
+        if (e.key === 'Escape')  dispatch(setCartStatus(false))
+    }
+
+	useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown)
+        return ()=>document.removeEventListener('keydown', handleKeyDown)
+    },[])
+
+
 	return (
         <div className="cart-wrapper" id='cart-wrapper' onClick={handleWrapperClick}>
             <div className="cart">
@@ -62,7 +73,8 @@ const CartPopup = () => {
                             <span className="cart__total">Total cost: </span>
                             <span className="cart__total-number">{`$${getCartTotalPrice()}` }</span>
                             <button className="cart__buy-button" onClick={() => {}}>Buy now</button>
-                            <button className="cart__clear-button" onClick={() => dispatch(clearCart())}> Clear cart</button>
+                            <button className="cart__clear-button" onClick={() => dispatch(setActionModal({visible:true, message:"Are you want clear cart?",callback:()=>dispatch(clearCart() )}))
+                                }> Clear cart</button>
                             
                         </>: <></>}
                     <button className="cart__close-button" onClick={() => dispatch(setCartStatus(false))}> Close</button>

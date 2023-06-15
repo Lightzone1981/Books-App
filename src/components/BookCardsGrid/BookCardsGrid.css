@@ -1,6 +1,6 @@
 .cards-container{
     padding: 2rem;
-    max-height: calc(100vh - 15rem);
+    max-height: calc(100vh - 17rem);
     overflow: auto;
     
     display:grid;
@@ -41,4 +41,10 @@ justify-content: center;
 .empty-list{
     width: 10rem;
     height: 12rem;
+}
+
+.loader{
+    color:#fff;
+    font-size: 2rem;
+    font-weight: bold;
 }

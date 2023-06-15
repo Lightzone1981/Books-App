@@ -1,9 +1,10 @@
-import { SET_NEW_BOOKS, SET_SEARCH_BOOKS, SET_SELECTED_BOOK, SET_FAVORITE_BOOK, REMOVE_FAVORITE_BOOK, REMOVE_ALL_FAVORITES, SET_VIEWED_BOOK, REMOVE_VIEWED_BOOK, REMOVE_ALL_VIEWED, SET_CART_BOOK, REMOVE_CART_BOOK, CLEAR_CART, INC_BOOKS_COUNT, DEC_BOOKS_COUNT} from "../action-types/index";
-import { IBookCard, IBookInfo, IBookInCart } from '../../types';
+import { SET_NEW_BOOKS, SET_SEARCH_BOOKS, SET_SELECTED_BOOK, SET_FAVORITE_BOOK, REMOVE_FAVORITE_BOOK, REMOVE_ALL_FAVORITES, SET_VIEWED_BOOK, REMOVE_VIEWED_BOOK, REMOVE_ALL_VIEWED, SET_CART_BOOK, REMOVE_CART_BOOK, CLEAR_CART, INC_BOOKS_COUNT, DEC_BOOKS_COUNT, SET_BOOKS_RATING} from "../action-types/index";
+import { IBookCard, IBookInfo, IBookInCart, IRating } from '../../types';
 
 const initialState = {
 	newBooks: [] as IBookInfo[],
 	searchBooks: [] as IBookInfo[],
+	searchBooksTotal: 0,
 	searchBooksPage: '0',
 	favoritesBooks: [] as IBookCard[],
 	favoritesBooksTotal: 0,
@@ -12,6 +13,7 @@ const initialState = {
 	cartBooks: [] as IBookInCart[],
 	cartBooksTotal: 0,
 	selectedBook: {} as IBookInfo,
+	myRating:{},
 };
 
 const getInitialState = () => {
@@ -41,7 +43,7 @@ const booksReducer = (state = getInitialState(), action: any) => {
 			return {
 				...state,
 				searchBooks: data.books,
-				searchBooksTotal:data.total,
+				searchBooksTotal: Number(data.total)>1000?1000:Number(data.total),
 				searchBooksPage: data.page,
 			};
 		}
@@ -193,6 +195,17 @@ const booksReducer = (state = getInitialState(), action: any) => {
 				cartBooks: newArr,
 			};
 		}
+		
+		case SET_BOOKS_RATING: {
+			const { isbn13, rating } = action
+			let newRating = state.myRating
+			newRating[isbn13] = rating
+			return {
+				...state,
+				myRating: newRating,
+			};
+		}
+			
 		
 		
 		default: {

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import './BookCard.css'
 import CartIcon from '../Icons/CartIcon';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFavoriteBook, removeFavoriteBook, setViewedBook, removeViewedBook, setCartBook, setActivePage } from '../../redux/action-creators';
+import { setFavoriteBook, removeFavoriteBook, setViewedBook, removeViewedBook, setCartBook, setActivePage, setSelectedBook, setLoaderStatus } from '../../redux/action-creators';
 import { useNavigate } from 'react-router-dom';
 import FavoriteIcon from '../Icons/FavoriteIcon';
 import { AddToCartButton } from '../AddToCartButton';
@@ -27,6 +27,7 @@ const BookCard = ({title, subtitle, isbn13, price, image}: IBookCard) => {
     const favoriteBooks = useSelector((state: IStoreState) => state.books.favoritesBooks)
     const cartBooks = useSelector((state: IStoreState) => state.books.cartBooks)
     const activePage = useSelector((store: IStoreState) => store.ui.activePage)
+    const status404 = useSelector((state: IStoreState) => state.ui.status404)
 
     const [isFavorite, setFavorite] = useState(getFavoriteStatus())
     const [bookCartStatus, setBookCartStatus] = useState(hasCartCurrentBook(isbn13))
@@ -41,8 +42,9 @@ const BookCard = ({title, subtitle, isbn13, price, image}: IBookCard) => {
 
     const handleTitleClick = (e: any, book: IBookCard) => {
         dispatch(setViewedBook(book))
-        dispatch(setActivePage('selected'))
-        navigate(`/books/${e.target.id.split('-')[1]}`)
+        dispatch(setLoaderStatus(true))
+        dispatch(setSelectedBook({} as IBookInfo))
+        if (!status404) navigate(`/books/${e.target.id.split('-')[1]}`)
     }
 
     const handleBookmarkClick = (book: IBookCard) => {
@@ -55,13 +57,13 @@ const BookCard = ({title, subtitle, isbn13, price, image}: IBookCard) => {
     }
 
     return <div key={isbn13}  className="book-card" id={isbn13} >
-        <div className="book-card__image" style={{ background: `url(${image}) center/contain` }}></div>
+        <div className="book-card__image" style={{ background: `url(${image}) center/contain` } }></div>
         <h3 className="book-card__title" id={`title-${isbn13}`} title={subtitle} onClick={(e)=>handleTitleClick(e,{title, subtitle, isbn13, price, image})} >{title}</h3>
         <div className="price-container">
-            <div className="book-card__price" data-free={price[1] === '0'}>{price[1] !== '0' ? `${price}` : 'FREE'}</div>
+            <div className="book-card__price" data-free={price[1] === '0'}>{price[1] !== '0' ? `${price}` : <></>}</div>
         </div>
         <footer className="book-card__footer">
-                <AddToCartButton bookCartStatus={bookCartStatus} title={title} subtitle={subtitle} isbn13={isbn13} price={price} count={1} image={image} />
+            {price[1] !== '0' ? <AddToCartButton bookCartStatus={bookCartStatus} title={title} subtitle={subtitle} isbn13={isbn13} price={price} count={1} image={image} />:<div className="book-card__price" data-free={true}>FREE Access</div>}
             {activePage !== 'favorites' ?
                 <div className="favorite-button" title='Add to favorites' onClick={() => handleBookmarkClick({ title, subtitle, isbn13, price, image })}>
                 <FavoriteIcon width='25' height='25' color={isFavorite?'#FF6600':'#d3d3d3'} />

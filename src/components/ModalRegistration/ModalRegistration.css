@@ -1,0 +1,126 @@
+.modal{
+	position: absolute;
+	top:0;
+	left:0;
+	z-index:100;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	background-color: rgba(0,0,0,0.9);
+}
+
+.modal__container--registration{
+    position: relative;
+	border-radius: 1rem;
+	padding: 3rem;
+	background-color: #fff;
+}
+
+.modal__button{
+    position:absolute;
+    top:0.5rem;
+    right:0.5rem;
+	width: 2rem;
+    height: 2rem;
+	cursor: pointer;
+	transition: 0.3s;
+    background-color: #fff;
+}
+
+.modal__button:before, 
+    .modal__button:after {
+    position: absolute;
+    content:'';
+    top:10%;
+    left:50%;
+    width: 1px;
+    height: 1.5rem;
+    background-color: #000;
+    transform: rotate(45deg);
+}
+
+.modal__button:after{
+    transform: rotate(-45deg);
+}
+
+.modal__button:hover {
+    opacity: 0.5;
+}
+
+body:has(.modal) {
+	overflow: hidden;
+}
+
+.registration-form {
+	margin: 0 auto;
+	min-width: 40rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.registration-form .button-registration {
+	padding: 1rem;
+	width: 12rem;
+	font-size: 1.5rem;
+	align-self: center;
+	background-color: #aaaaaa;
+	color: #fff;
+	border: none;
+	transition: .3s;
+}
+
+.registration-form .button-registration[data-active=true] {
+	cursor:pointer;
+	background-color: #5360cd;
+
+}
+
+.registration-form .button-registration[data-active=true]:hover{
+	transform: scale(1.1);
+	font-weight: bold;
+}
+
+.button-sign-in :hover{
+	background-color: #757fdd;
+}
+
+.sign-up-form-text {
+	font-size: 1rem;
+	text-align: center;
+	color: #8d8e97;
+}
+
+.modal__footer .button-sign-in{
+	cursor:pointer;
+	transition: .3s;
+	color: #5360cd;
+}
+
+
+
+
+@media (max-width: 768px) {
+	.registration {
+		max-width: 100%;
+	}
+
+	.sign-in-form {
+		padding: 1.5rem;
+	}
+}
+
+.modal__container--sign-in p{
+	text-align: center;
+	padding: 1rem;
+}
+
+.modal__footer{
+	font-size: 1.3rem;
+	display: flex;
+	padding-top: 2rem;
+	gap: 1rem;
+	justify-content: center;
+}

@@ -24,9 +24,9 @@ const RatingBar = (arg:any) => {
                 {
                     starArr.map((el: number, index:number) => {
                         return <div key={index} className="star-container">
-                            <Star width='16' height='16' color='#cfcfcf'/>
+                            <Star width='30' height='30' color='#cfcfcf'/>
                             <div className="gold-star" style={{width:`${el*22}px`, height:'22px'}}>
-                                <Star width='16' height='16' color='#ED8A19'/>
+                                <Star width='30' height='30' color='#ED8A19'/>
                             </div>
                         </div>
                     })

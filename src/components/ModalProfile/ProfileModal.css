@@ -1,0 +1,95 @@
+.modal{
+	position: absolute;
+	top:0;
+	left:0;
+	z-index:100;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	background-color: rgba(0,0,0,0.8);
+}
+
+.modal__container{
+    position: relative;
+	/* width: 70%; */
+	border-radius: 1rem;
+    height: fit-content;
+	padding: 4rem;
+	overflow: auto;
+	background-color: #fff;
+	border: 1px solid #919191;
+	display: flex;
+	flex-direction: column;
+	gap:2rem;
+}
+
+.modal__button{
+    position:absolute;
+    top:0.5rem;
+    right:0.5rem;
+	width: 2rem;
+    height: 2rem;
+	cursor: pointer;
+	transition: 0.3s;
+    background-color: #fff;
+}
+
+.modal__button:before, 
+    .modal__button:after {
+    position: absolute;
+    content:'';
+    top:10%;
+    left:50%;
+    width: 1px;
+    height: 1.5rem;
+    background-color: #000;
+    transform: rotate(45deg);
+}
+
+.modal__button:after{
+    transform: rotate(-45deg);
+}
+
+.modal__button:hover {
+    opacity: 0.5;
+}
+
+body:has(.modal) {
+	overflow: hidden;
+}
+
+.profile {
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.profile__title {
+	text-align: center;
+}
+
+.profile__name, .profile__email{
+	display:flex;
+	gap:2rem;
+}
+
+.log-out-button {
+	padding: 1rem;
+	width: 12rem;
+	font-size: 1.5rem;
+	align-self: center;
+	background-color: #5360cd;
+	color: #fff;
+	border: none;
+	cursor:pointer;
+	transition: .3s;
+	text-align: center;
+}
+
+.log-out-button:hover{
+	background-color: #757fdd;
+}

@@ -1,0 +1,24 @@
+.start{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    gap: 2rem;
+}
+
+.start-title{
+    font-size: 3rem;
+}
+
+.start-sign-in{
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.start-sign-in:hover{
+    text-decoration: underline;
+    font-size: 1.6rem;
+}

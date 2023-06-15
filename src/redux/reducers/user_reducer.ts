@@ -1,12 +1,14 @@
-import { SET_USER, LOG_OUT } from "../action-types/index";
+import { SET_USER, SET_SIGN_UP_DATA, SET_ACTIVATION_LINK, LOG_OUT } from "../action-types/index";
 import { IUserData } from "../../types";
 
 const initialState = {
 	authorizedUser: {
-		name: "Lightzone",
+		username: "",
 		email: "",
 		id: "",
 	},
+	signUpData: {},
+	activationLink:'',
 }
 
 const getInitialState = () => {
@@ -29,7 +31,25 @@ const userReducer = (state = getInitialState(), action: any) => {
 				authorizedUser:user,
 			};
 		}
+			
+		case SET_SIGN_UP_DATA: {
+			const { data } = action;
+			return {
+				...state,
+				signUpData:data,
+			};
+		}
 
+		case SET_ACTIVATION_LINK: {
+			const { activationLink } = action;
+			return {
+				...state,
+				activationLink,
+			};
+		}
+
+		
+		
 		case LOG_OUT: {
 			return {
 				...state,

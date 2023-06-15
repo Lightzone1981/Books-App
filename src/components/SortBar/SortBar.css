@@ -1,0 +1,40 @@
+.sort-bar{
+    display: flex;
+    align-items: center;
+}
+
+.sort-bar__button{
+    width: 2.7rem;
+    height: 2.7rem;
+    border: 1px solid #2891ce;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.sort-bar__select{
+    border: none;
+    font-size: 1.3rem;
+    height: 2.7rem;;
+    padding: 0 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.sort-bar__button:hover{
+    background-color: #156696;
+}
+
+.sort-bar__button[data-active=true]{
+    background-color: #2891ce;
+}
+
+.sort-bar__button:nth-child(2){
+    transform: rotate(-90deg);
+}
+
+.sort-bar__button:last-child{
+    transform: rotate(90deg);
+}

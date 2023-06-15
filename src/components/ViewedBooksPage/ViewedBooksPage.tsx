@@ -6,13 +6,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IStoreState } from '../../types';
 import CartPopup from '../CartPopup/CartPopup';
 import { useEffect } from 'react';
-import { setActivePage } from "../../redux/action-creators";
+import { setActivePage, setLoaderStatus } from "../../redux/action-creators";
 
 const ViewedBooksPage = () => {
     const cartPopupStatus = useSelector((store: IStoreState) => store.ui.cartPopupStatus)
     
     const dispatch = useDispatch()
     useEffect(() => {
+        dispatch(setLoaderStatus(false))
         dispatch(setActivePage('viewed'))
     }, []);
 

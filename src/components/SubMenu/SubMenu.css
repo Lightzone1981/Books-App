@@ -1,6 +1,9 @@
-.sub-menu{
+.sub-menu__list{
     display: flex;
+    align-items: center;
+    gap:2rem;
     padding: 1rem 0;
+    list-style-type: none;
 }
     
 .sub-menu__item{

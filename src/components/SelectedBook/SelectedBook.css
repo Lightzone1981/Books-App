@@ -1,6 +1,6 @@
 .book {
 	width: 100%;
-	height: calc(100vh - 10rem);
+	/* height: calc(100vh - 9rem); */
 	overflow: auto;
 	display: flex;
 	background-color: #fff;
@@ -12,6 +12,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap:1rem;
+	padding-bottom: 2rem;
 }
 
 .book__image {
@@ -52,10 +53,11 @@
 }
 
 .book__params {
-	font-size: 1.1rem;
+	font-size: 1rem;
 	list-style-type: none;
 	display: flex;
 	flex-direction: column;
+	padding-bottom:1rem;
 }
 
 .book__params li {
@@ -71,10 +73,13 @@
 
 .book__params li span, .pdf-list {
     width: 50%;
-    padding: 1rem;
+    padding: .5rem 1rem;
 }
 
 .book__price{
     font-size: 2.2rem;
 }
 
+.book__price[data-free=true]{
+	color:rgb(84, 168, 0);
+}

@@ -3,28 +3,29 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IStoreState } from '../../types';
 import { useParams} from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { loadSelectedBook } from '../../redux/action-creators';
-import CartIcon from '../Icons/CartIcon';
 import { RatingBar } from '../RatingBar';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
+import MyRating from '../MyRating/MyRating';
 
 const SelectedBook = () => {
-    const dispatch = useDispatch()
-    const { bookIsbn = '' } = useParams();
 
     useEffect(() => {
-        dispatch(loadSelectedBook(bookIsbn))
         setBookCartStatus(hasCartCurrentBook(isbn13))
     })
 
     const selectedBook = useSelector((state: IStoreState) => state.books.selectedBook)
+    const myRating = useSelector((state: IStoreState) => state.books.myRating)
     const { title, subtitle, language, authors, publisher, pages, year, rating, isbn10, desc, isbn13, url, pdf, price, image } = selectedBook
     
     const getPdfList = (pdf: any) => {
-
         for (let key in pdf) {
             return <a key={key} className='free-link' href={pdf[key]}> {key}  </a>
         }
+    }
+
+    const getMyRating = () => {
+        if (myRating[isbn13] && myRating[isbn13] > 0) return myRating[isbn13]
+        else return 0
     }
 
     const hasCartCurrentBook = (isbn13:string) => {
@@ -35,14 +36,17 @@ const SelectedBook = () => {
 
     const cartBooks = useSelector((state: IStoreState) => state.books.cartBooks)
     const [bookCartStatus, setBookCartStatus] = useState(hasCartCurrentBook(isbn13))
+    const loaderStatus = useSelector(
+		(state: IStoreState) => state.ui.loaderStatus
+    );
 
-
-    return (
+    return (!loaderStatus?
         <main className="book">
             <div className="book__container">
                 <div className="book__image" style={{ background: `url(${image}) center/cover` }}></div>
-                <h3 className="book__price">{price }</h3>
-                <AddToCartButton bookCartStatus={bookCartStatus} title={title} subtitle={subtitle} isbn13={isbn13} price={price} count={1} image={image} />
+                <h3 className="book__price" data-free={price[1] === '0'}>{price[1] !== '0' ? `${price}` : 'FREE Access'}</h3>
+                {price[1] !== '0' ? <div onClick={() => setBookCartStatus(hasCartCurrentBook(isbn13))} style={{ width: '100%' }}><AddToCartButton bookCartStatus={bookCartStatus} title={title} subtitle={subtitle} isbn13={isbn13} price={price} count={1} image={image} />
+                    </div>: <></>}
             </div>
             <div className="book__info-container">
                 <p className="book__authors">{authors}</p>
@@ -50,7 +54,6 @@ const SelectedBook = () => {
                 <h3 className="book__subtitle">{subtitle}</h3>
                 <p className="book__desc">{desc}</p>
                 <RatingBar rating={rating} />
-                
                 <ul className="book__params">
                     <li className="book__code">
                         <span >Product code</span>
@@ -87,8 +90,9 @@ const SelectedBook = () => {
                     }
 
                 </ul>
+                <MyRating isbn13={isbn13}  myRating={getMyRating()}  visibleStatus={myRating[isbn13]?true:false}/>
             </div>
-        </main>
+        </main>:<></>
     )
 }
 export default SelectedBook

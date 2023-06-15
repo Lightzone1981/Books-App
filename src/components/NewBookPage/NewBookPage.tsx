@@ -5,7 +5,7 @@ import { MainMenu } from "../MainMenu"
 import { useSelector, useDispatch } from 'react-redux';
 import { IStoreState } from '../../types';
 import { useEffect } from 'react';
-import { setActivePage } from "../../redux/action-creators";
+import { setActivePage, setLoaderStatus } from "../../redux/action-creators";
 
 const NewBookPage = () => {
     const cartPopupStatus = useSelector((store:IStoreState)=>store.ui.cartPopupStatus)
